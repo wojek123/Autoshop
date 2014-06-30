@@ -1,0 +1,40 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Tworzenie oferty samochodu
+  </div>
+  <div class="panel-footer">
+	<%= simple_form_for @car, :html => {:multipart => true} do |f| %>
+	  
+ <%= f.input :brand,collection: ['Audi','BMW','Citroen','Daewoo','Fiat','Ford','Honda','Mazda', 'Mercedes-benz',
+    'Opel','Peugeot','Renault','Seat','Skoda','Toyota','Volkswagen'] , label: 'Marka Samochodu:',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' } %>
+
+
+
+    
+   <%= f.input :model, label:'Wprowadz model samochodu' ,:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+   
+
+
+      <%= f.input :year, collection: 1960..2014, label: 'Rok produkcji:',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label'}  %>
+      <%= f.input :milage, label: 'Przebieg:', :input_html => { class: 'form-control' } ,:label_html => { class: 'control-label' }  %>
+      <%= f.input :gearcase, collection: ['Automat','Manualna'], label: 'Skrzynia biegów:',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :type, collection: ['Hatchback','Sedan/Limuzyna','Kombi','Van'], label: 'Typ:',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :engine, label: 'Silnik (cm3):', :input_html => { class: 'form-control' } ,:label_html => { class: 'control-label' }  %>
+      <%= f.input :fuel, collection: ['Benzyna','Diesel','Benzyna + LPG'], label: 'Rodzaj paliwa',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :doors, collection: 3..5, label: 'Drzwi', class: 'form-control',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :stan, collection: ['Nowy','Używany'], label: 'Stan Samochodu', :input_html => { class: 'form-control' } ,:label_html => { class: 'control-label' }  %>
+      <%= f.input :broken,collection: [:true, :false], label: 'Uszkodzony',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :color, label: 'Kolor',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :power, label: 'Moc silnika (KM)',:input_html => { class: 'form-control' } , :label_html => { class: 'control-label' }  %>
+      <%= f.input :description, as: :text, label: 'Opis', input_html: {class: 'form-control', rows: '5' } , :label_html => { class: 'control-label' } %>
+      <%= f.input :equipment, as: :text, label: 'Wyposarzenie', input_html: {class: 'form-control', rows: '5'} , :label_html => { class: 'control-label' } %>
+      <%= f.input :info, as: :text, label: 'Dodatkowe informacje', input_html: {class: 'form-control', rows: '5'}, :label_html => { class: 'control-label' }  %>
+      <%= f.input :price, label: 'Cena', :label_html => { class: 'control-label' }  %>
+      <%= f.input :photo, as: :file, label: 'Dodaj avatar', :label_html => { class: 'control-label' }   %><br />
+      <%= f.button :submit, 'Dodaj', class: 'btn btn-primary' %>
+	<% end %>
+  </div>
+</div>
+
+<%= link_to 'Back', cars_path,  class: 'btn btn-default' %>

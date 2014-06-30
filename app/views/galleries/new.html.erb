@@ -1,0 +1,6 @@
+<h2> Dodawanie zjdec do galeri</h2>
+
+<%= simple_form_for @galleries , :html => {:multipart => true} do |f| %>
+	<%= f.input :img, input_html: { multiple: 'multiple' }, as: :file ,label: 'Dodaj zdjecia', :label_html => { class: 'control-label' } %>
+	<%= f.submit 'Dodaj zdecia', class: 'btn btn-primary' %>
+<% end %>

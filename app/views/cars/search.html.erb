@@ -1,0 +1,57 @@
+
+ <%= simple_form_for 'car', class: "form-inline" do |f| %>
+  
+    <%= f.input :brand, label: 'Marka', class: "form-control" %><br />
+    <%= f.input :model, label: 'Model', class: "form-control" %><br />
+    
+    <%= f.input :min, label: 'min', class: "form-control" %><br />
+    <%= f.input :max, label: 'max', class: "form-control" %><br />
+    
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  
+ <% end %>
+
+ <% if @cars %>
+
+  <% @cars.each do |car| %>
+            <div class=".col1" style="float:left;">
+              <%= image_tag car.photo.url(:thumb), class: 'thumbnail' %>
+              <h4 class="media-heading"></h4> 
+                <ul >
+                 <li><%= car.brand %> <%= car.model %> </li>
+                 <li>Pojemność silnika(cm3): <%= car.engine %> </li>
+                 <li>Paliwo: <%= car.fuel %> </li>
+                 <li>Liczba drzwi: <%= car.doors %> </li>
+                 <li>Skrzynia biegów: <%= car.gearcase %> </li>
+                  <li>Przebieg: <%= car.milage %></li>
+                </ul>
+  
+                <ul>
+                  <li>Kolor: <%= car.color %>  </li>
+                  <li>Typ pojazdu: <%= car.type %>  </li>
+                  <li>Stan: <%= car.stan %> </li>
+                  <li>Moc silnika (KM): <%= car.engine %>  </li>
+                  <li>Rok produkcji: <%= car.year %> </li>
+              </ul>
+            
+           
+           <%= link_to 'Show', car, class: "btn btn-default" %>
+           
+           </div>
+    <% end %>
+
+ <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

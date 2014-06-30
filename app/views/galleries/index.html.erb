@@ -1,0 +1,9 @@
+ 
+<div class="row">
+   
+ <% @galleries.each do |g| %>
+  <div class="col-xs-6 col-md-3">
+   <%= image_tag g.img.url(:thumb), class: "thumbnail" %>
+   </div>
+ <% end %>
+ </div>

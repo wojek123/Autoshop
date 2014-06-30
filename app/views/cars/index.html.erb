@@ -1,0 +1,35 @@
+ 
+    <% @cars.each do |car| %>
+            <div class=".col1" style="float:left; padding:20px;">
+              <%= image_tag car.photo.url(:thumb), class: 'thumbnail' %>
+              
+                <ul style="list-style: none;" >
+                 <li><%= car.brand %> <%= car.model %> </li>
+                 <li>Pojemność silnika(cm3): <%= car.engine %> </li>
+                 <li>Paliwo: <%= car.fuel %> </li>
+                 <li>Liczba drzwi: <%= car.doors %> </li>
+                 <li>Skrzynia biegów: <%= car.gearcase %> </li>
+                  <li>Przebieg: <%= car.milage %></li>
+                  <li>Kolor: <%= car.color %>  </li>
+                  <li>Typ pojazdu: <%= car.type %>  </li>
+                  <li>Stan: <%= car.stan %> </li>
+                  <li>Moc silnika (KM): <%= car.engine %>  </li>
+                  <li>Rok produkcji: <%= car.year %> </li>
+              </ul>
+            
+           
+           <%= link_to 'Show', car, class: "btn btn-default" %>
+          <%if user_signed_in? %>
+           <% if current_user.id == car.user_id %>
+           <%= link_to 'Edit', edit_car_path(car), class: "btn btn-default"  %>
+           <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default" %>
+           <% end %>
+          <% end %>
+           </div>
+    <% end %>
+    
+  <%if user_signed_in? %>
+           <%= link_to 'New Car', new_car_path, class: "btn btn-default" %>
+  <% end %>
+
+

@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="cols1">
+		<h3>Witaj na stronie Autoshop</h3>
+		<p>
+			Znajdziesz tu ciekawe oferty samochodów osobowych. 
+		</p>
+	</div>
+	<div class="cols2">
+		<%if !user_signed_in? %>
+			<div class="panel panel-default">
+				<div class="panel-heading"> Zaloguj się</div>
+ 				<div class="panel-body">
+   					Aby skorzystać ze wszystkich usług:<br />
+   					<%= link_to 'Zaloguj się ', new_user_session_path, class: "btn btn-default" %><br />
+   					<br />
+   					Jeśli nie masz jeszcze konta<br/>
+   					<%= link_to 'Zarejestruj się ',  new_user_registration_path, class: "btn btn-default" %>
+  				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

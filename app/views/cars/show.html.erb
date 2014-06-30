@@ -1,0 +1,46 @@
+<div class="container">
+	<h2><%= @car.brand %> <%= @car.model %></h2>
+	 <ul style="list-style: none;">
+       <li>Pojemność silnika(cm3): <%= @car.engine %> </li>
+       <li>Paliwo: <%= @car.fuel %> </li>
+       <li>Liczba drzwi: <%= @car.doors %> </li>
+       <li>Skrzynia biegów: <%= @car.gearcase %> </li>
+       <li>Przebieg: <%= @car.milage %></li>
+       <li>Kolor: <%= @car.color %>  </li>
+       <li>Typ pojazdu: <%= @car.type %>  </li>
+       <li>Stan: <%= @car.stan %> </li>
+       <li>Moc silnika (KM): <%= @car.engine %>  </li>
+       <li>Opis: <%= @car.description %> </li>
+       <li>Wyposarzenie: <%= @car.equipment %> </li>
+       <li>Dodatkowe informacje: <%= @car.info %> </li>
+      <li>Cena: <%= @car.price %> </li>
+     </ul>
+     <div class="panel panel-primary">
+      <div class="panel-heading">
+        Galeria zdjęć samochodu
+        </div>
+        <div class="panel-body">
+            <div class="row">
+             <% @galleries.each do |g| %>
+             <div class="col-xs-6 col-md-3">
+                <%= image_tag g.img.url(:thumb), class: "thumbnail" %>
+             </div>
+            <% end %>
+            </div>
+        </div>
+     </div>
+</div>
+<%= link_to 'Back', cars_path, class: "btn btn-primary"  %> 
+<%if user_signed_in? %>
+  <% if current_user.id == @car.user_id %>
+    <%= link_to 'Edit', edit_car_path(@car), class: "btn btn-primary" %> 
+    <%= link_to 'Dodaj zdjecia', new_gallery_path(@car), class: "btn btn-primary"  %>
+  
+  <% if !@user.purchased_car?(@car,@user) %>
+    <% unless (current_user.id == @car.user_id) %>
+      <%= link_to 'Zamow', purchase_path(@car),method: :post, data: { confirm: 'Are you sure?' } ,class: "btn btn-primary"  %>
+    <% end %> 
+  <% end %>
+<% end %>
+<% end %>
+ 
